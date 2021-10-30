@@ -1,8 +1,8 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import "./OfferDetails.css";
 
@@ -19,7 +19,14 @@ const OfferDetails = () => {
   });
 
   const { name, img, price, packages } = offerDetails;
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    data.OfferDetails = offerDetails;
+    axios.post("http://localhost:5000/bookings", data).then((res) => {
+      if (res.data.insertedId) {
+        alert("Successfully Booked");
+      }
+    });
+  };
   return (
     <Row
       xs={1}
@@ -70,9 +77,7 @@ const OfferDetails = () => {
           />
           <br />
 
-          <Link to="/myBookings">
-            <input className="order-btn" type="submit" />
-          </Link>
+          <input className="order-btn" type="submit" />
         </form>
       </Col>
     </Row>
