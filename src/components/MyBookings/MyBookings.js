@@ -8,7 +8,9 @@ const MyBookings = () => {
   const [myBookings, setMyBookings] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/bookings/${user.email}`)
+    fetch(
+      `https://dreadful-cemetery-54829.herokuapp.com/bookings/${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setMyBookings(data));
   }, []);

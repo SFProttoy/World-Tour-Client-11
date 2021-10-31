@@ -4,12 +4,14 @@ import { useForm } from "react-hook-form";
 const AddTour = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    axios.post("http://localhost:5000/offers", data).then((res) => {
-      if (res.data.insertedId) {
-        alert("A new tour added successsfully");
-        reset();
-      }
-    });
+    axios
+      .post("https://dreadful-cemetery-54829.herokuapp.com/offers", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          alert("A new tour added successsfully");
+          reset();
+        }
+      });
   };
   return (
     <div>
@@ -19,7 +21,7 @@ const AddTour = () => {
           className="size"
           defaultValue=""
           placeholder="name"
-          {...register("name")}
+          {...register("name", { required: true })}
         />
         <br />
         <input
@@ -33,7 +35,7 @@ const AddTour = () => {
           className="size"
           placeholder="description"
           defaultValue=""
-          {...register("description")}
+          {...register("description", { required: true })}
         />
         <br />
         <input
@@ -47,7 +49,7 @@ const AddTour = () => {
           className="size"
           placeholder="packages"
           defaultValue=""
-          {...register("packages")}
+          {...register("packages", { required: true })}
         />
         <br />
 

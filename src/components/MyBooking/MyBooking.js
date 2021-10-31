@@ -12,7 +12,7 @@ const MyBooking = (props) => {
       '"Are you sure you want to cancel the tour?"'
     );
     if (proceed) {
-      const url = `http://localhost:5000/bookings/${id}`;
+      const url = `https://dreadful-cemetery-54829.herokuapp.com/bookings/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: { "content-type": "application/json" },

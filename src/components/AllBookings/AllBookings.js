@@ -5,7 +5,7 @@ const AllBookings = () => {
   const [allBookings, setAllBookings] = useState([]);
   const [status, setStatus] = useState();
   useEffect(() => {
-    fetch("http://localhost:5000/bookings")
+    fetch("https://dreadful-cemetery-54829.herokuapp.com/bookings")
       .then((res) => res.json())
       .then((data) => setAllBookings(data));
   }, [status]);
@@ -17,7 +17,7 @@ const AllBookings = () => {
       '"Are you sure you want to cancel the tour?"'
     );
     if (proceed) {
-      const url = `http://localhost:5000/bookings/${id}`;
+      const url = `https://dreadful-cemetery-54829.herokuapp.com/bookings/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: { "content-type": "application/json" },
@@ -39,7 +39,7 @@ const AllBookings = () => {
 
   const handleUpdateStatus = (id, allBooking) => {
     allBooking.status = "approved";
-    const url = `http://localhost:5000/bookings/${id}`;
+    const url = `https://dreadful-cemetery-54829.herokuapp.com/bookings/${id}`;
     fetch(url, {
       method: "PUT",
       headers: { "content-type": "application/json" },

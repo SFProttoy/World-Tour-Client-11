@@ -13,7 +13,7 @@ const OfferDetails = () => {
   const { register, handleSubmit, reset } = useForm();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/offers/${offerId}`)
+    fetch(`https://dreadful-cemetery-54829.herokuapp.com/offers/${offerId}`)
       .then((res) => res.json())
       .then((data) => setOfferDetails(data));
   });
@@ -21,12 +21,14 @@ const OfferDetails = () => {
   const { name, img, price, packages } = offerDetails;
   const onSubmit = (data) => {
     data.OfferDetails = offerDetails;
-    axios.post("http://localhost:5000/bookings", data).then((res) => {
-      if (res.data.insertedId) {
-        alert("Successfully Booked");
-        reset();
-      }
-    });
+    axios
+      .post("https://dreadful-cemetery-54829.herokuapp.com/bookings", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          alert("Successfully Booked");
+          reset();
+        }
+      });
   };
   return (
     <Row
@@ -66,21 +68,21 @@ const OfferDetails = () => {
             className="size"
             placeholder="Address"
             defaultValue=""
-            {...register("address")}
+            {...register("address", { required: true })}
           />
           <br />
           <input
             className="size"
             placeholder="City"
             defaultValue=""
-            {...register("city")}
+            {...register("city", { required: true })}
           />
           <br />
           <input
             className="size"
             placeholder="phone number"
             defaultValue=""
-            {...register("phone")}
+            {...register("phone", { required: true })}
           />
           <br />
 
