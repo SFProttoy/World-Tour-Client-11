@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
-
+import "./AllBookings.css";
 const AllBookings = () => {
   const [allBookings, setAllBookings] = useState([]);
-
-  useState(() => {
+  const [status, setStatus] = useState();
+  useEffect(() => {
     fetch("http://localhost:5000/bookings")
       .then((res) => res.json())
       .then((data) => setAllBookings(data));
-  }, []);
+  }, [status]);
 
   // Cancel a tour
 
@@ -35,6 +35,25 @@ const AllBookings = () => {
     }
   };
 
+  // Update status
+
+  const handleUpdateStatus = (id, allBooking) => {
+    allBooking.status = "approved";
+    const url = `http://localhost:5000/bookings/${id}`;
+    fetch(url, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(allBooking),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          alert("Your pending booking has been updated.");
+          setStatus(true);
+        }
+      });
+  };
+
   return (
     <div>
       <h1>Total Bookings: {allBookings.length}</h1>
@@ -42,7 +61,7 @@ const AllBookings = () => {
         {allBookings.map((allBooking) => (
           <div key={allBooking._id}>
             <Col>
-              <Card className="card-data mt-4">
+              <Card className="allBooking-card-data mt-4">
                 <Card.Img
                   className="mx-auto"
                   variant="top"
@@ -50,16 +69,28 @@ const AllBookings = () => {
                 />
                 <Card.Body>
                   <Card.Title>{allBooking.OfferDetails.name}</Card.Title>
-                  <p className="fs-4 fw-bolder info">Name: {allBooking.name}</p>
-                  <p className="fs-5 fw-bolder info">
-                    Email: {allBooking.email}
+                  <p className="fs-4 fw-bolder">Name: {allBooking.name}</p>
+                  <p className="fs-4 fw-bolder">
+                    Price: ${allBooking.OfferDetails.price}
                   </p>
-
+                  <p className="fs-5 fw-bolder">Email: {allBooking.email}</p>
+                  <h5 className="mt-3 mb-3 fw-bolder">
+                    Order Status: {allBooking.status}
+                  </h5>
                   <Button
                     className="btn btn-danger"
                     onClick={() => handleCancel(allBooking._id)}
                   >
                     Cancel Tour
+                  </Button>
+                  <br />
+                  <Button
+                    className="btn btn-success mt-4"
+                    onClick={() =>
+                      handleUpdateStatus(allBooking._id, allBooking)
+                    }
+                  >
+                    Approve
                   </Button>
                 </Card.Body>
               </Card>

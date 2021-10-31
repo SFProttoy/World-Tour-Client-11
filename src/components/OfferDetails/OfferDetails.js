@@ -24,6 +24,7 @@ const OfferDetails = () => {
     axios.post("http://localhost:5000/bookings", data).then((res) => {
       if (res.data.insertedId) {
         alert("Successfully Booked");
+        reset();
       }
     });
   };
@@ -43,6 +44,12 @@ const OfferDetails = () => {
       </Col>
       <Col>
         <form className="" onSubmit={handleSubmit(onSubmit)}>
+          <input
+            className="size"
+            defaultValue="pending"
+            {...register("status")}
+          />
+          <br />
           <input
             className="size"
             defaultValue={user.displayName}

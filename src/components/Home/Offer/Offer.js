@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Card, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import "./Offer.css";
 const Offer = (props) => {
   //   console.log(props);
   const { _id, name, description, img } = props.offer;
@@ -15,7 +15,7 @@ const Offer = (props) => {
             <p className="fs-6 info">{description}</p>
 
             <Link to={`/offerDetails/${_id}`}>
-              <Button className="btn btn-primary button">Book</Button>
+              <Button className="btn btn-dark button">Book now</Button>
             </Link>
           </Card.Body>
         </Card>

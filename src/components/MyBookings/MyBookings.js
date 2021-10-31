@@ -17,7 +17,12 @@ const MyBookings = () => {
       <h1>MyBookings:{myBookings.length}</h1>
       <Row xs={1} md={3} className="container g-4 mx-auto">
         {myBookings.map((myBooking) => (
-          <MyBooking key={myBooking._id} myBooking={myBooking}></MyBooking>
+          <MyBooking
+            key={myBooking._id}
+            myBooking={myBooking}
+            myBookings={myBookings}
+            setMyBookings={setMyBookings}
+          ></MyBooking>
         ))}
       </Row>
     </div>

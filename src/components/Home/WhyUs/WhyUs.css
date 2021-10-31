@@ -1,0 +1,16 @@
+.reviews {
+  width: 350px;
+  height: 250px;
+}
+
+.image {
+  width: 120px;
+  margin-top: 20px;
+  border-radius: 50%;
+}
+
+@media only screen and (max-width: 688px) {
+  .reviews {
+    width: 250px;
+  }
+}

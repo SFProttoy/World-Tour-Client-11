@@ -1,7 +1,60 @@
+import axios from "axios";
 import React from "react";
-
+import { useForm } from "react-hook-form";
 const AddTour = () => {
-  return <div>Add Tour</div>;
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = (data) => {
+    axios.post("http://localhost:5000/offers", data).then((res) => {
+      if (res.data.insertedId) {
+        alert("A new tour added successsfully");
+        reset();
+      }
+    });
+  };
+  return (
+    <div>
+      <h1>Add A New Tour</h1>
+      <form className="" onSubmit={handleSubmit(onSubmit)}>
+        <input
+          className="size"
+          defaultValue=""
+          placeholder="name"
+          {...register("name")}
+        />
+        <br />
+        <input
+          className="size"
+          defaultValue=""
+          placeholder="price"
+          {...register("price", { required: true })}
+        />
+        <br />
+        <textarea
+          className="size"
+          placeholder="description"
+          defaultValue=""
+          {...register("description")}
+        />
+        <br />
+        <input
+          className="size"
+          placeholder="image url"
+          defaultValue=""
+          {...register("img")}
+        />
+        <br />
+        <input
+          className="size"
+          placeholder="packages"
+          defaultValue=""
+          {...register("packages")}
+        />
+        <br />
+
+        <input className="order-btn" type="submit" />
+      </form>
+    </div>
+  );
 };
 
 export default AddTour;

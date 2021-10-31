@@ -12,9 +12,8 @@ const Offers = () => {
   }, []);
   return (
     <div>
-      <h1 className="mt-4">
-        Our
-        <span className="services"> Test Services</span>
+      <h1 className="mt-5">
+        Our <span style={{ color: "#47a0ff" }}>Tour Offers</span>
         <Row xs={1} md={3} className="container g-4 mx-auto">
           {offers.map((offer) => (
             <Offer key={offer._id} offer={offer}></Offer>
