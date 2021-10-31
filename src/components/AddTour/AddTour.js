@@ -53,7 +53,7 @@ const AddTour = () => {
         />
         <br />
 
-        <input className="order-btn" type="submit" />
+        <input className="order-btn" type="submit" value="Add" />
       </form>
     </div>
   );

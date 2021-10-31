@@ -86,7 +86,7 @@ const OfferDetails = () => {
           />
           <br />
 
-          <input className="order-btn" type="submit" />
+          <input className="order-btn" type="submit" value="Add" />
         </form>
       </Col>
     </Row>
