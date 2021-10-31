@@ -35,7 +35,7 @@ const OfferDetails = () => {
       className="mt-5 d-flex justify-content-center align-items-center w-100"
     >
       <Col className="details">
-        <img src={img} alt="" />
+        <img className="offer-img" src={img} alt="" />
         <h1>{name}</h1>
         <p className="mt-5 mb-4 details-para fw-bold fs-4">
           Packages: {packages}

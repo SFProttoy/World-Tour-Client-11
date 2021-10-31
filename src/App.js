@@ -6,6 +6,7 @@ import Home from "./components/Home/Home/Home";
 import Login from "./components/Login/Login";
 import PrivateRoute from "./components/Login/PrivateRoute/PrivateRoute";
 import MyBookings from "./components/MyBookings/MyBookings";
+import NotFound from "./components/NotFound/NotFound";
 import OfferDetails from "./components/OfferDetails/OfferDetails";
 import AuthProvider from "./contexts/AuthProvider";
 import Footer from "./Shared/Footer/Footer";
@@ -39,6 +40,9 @@ function App() {
             <PrivateRoute path="/offerDetails/:offerId">
               <OfferDetails></OfferDetails>
             </PrivateRoute>
+            <Route path="*">
+              <NotFound></NotFound>
+            </Route>
           </Switch>
           <Footer></Footer>
         </Router>

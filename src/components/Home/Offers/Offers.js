@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Row } from "react-bootstrap";
+import { Row, Spinner } from "react-bootstrap";
 import Offer from "../Offer/Offer";
 
 const Offers = () => {
@@ -12,14 +12,18 @@ const Offers = () => {
   }, []);
   return (
     <div>
-      <h1 className="mt-5">
-        Our <span style={{ color: "#47a0ff" }}>Tour Offers</span>
-        <Row xs={1} md={3} className="container g-4 mx-auto">
-          {offers.map((offer) => (
-            <Offer key={offer._id} offer={offer}></Offer>
-          ))}
-        </Row>
-      </h1>
+      {offers.length === 0 ? (
+        <Spinner className="mt-5" animation="border" variant="dark" />
+      ) : (
+        <h1 className="mt-5">
+          Our <span style={{ color: "#47a0ff" }}>Tour Offers</span>
+          <Row xs={1} md={3} className="container g-4 mx-auto">
+            {offers.map((offer) => (
+              <Offer key={offer._id} offer={offer}></Offer>
+            ))}
+          </Row>
+        </h1>
+      )}
     </div>
   );
 };

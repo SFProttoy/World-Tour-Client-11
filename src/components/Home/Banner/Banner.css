@@ -18,3 +18,12 @@
   font-weight: bold;
   font-size: 59px;
 }
+
+@media only screen and (max-width: 688px) {
+  .banner-title {
+    margin-left: 20px;
+  }
+  .title {
+    font-size: 30px;
+  }
+}

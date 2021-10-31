@@ -10,7 +10,7 @@ const Banner = () => {
             <h1 className="title">
               GET THE BEST <br /> EVER EXPERIENCE !
             </h1>
-            <p className="text-white text-center mt-4 fs-3 fw-bold">
+            <p className="title text-white text-center mt-4 fs-3 fw-bold">
               VISIT WORLD'S BEST PLACES
             </p>
           </div>

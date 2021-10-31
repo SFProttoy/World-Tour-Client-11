@@ -7,3 +7,9 @@
   cursor: pointer;
   padding: 8px;
 }
+
+@media only screen and (max-width: 688px) {
+  .link {
+    margin-left: 70px;
+  }
+}

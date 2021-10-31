@@ -35,10 +35,12 @@ const Header = () => {
                 <Nav.Link className="link" as={Link} to="/addTour">
                   Add A New Tour
                 </Nav.Link>
-                <p className="text-white mt-3 me-3 fw-bolder">
+                <p className="text-white mt-3 me-3 fw-bolder link">
                   {user?.displayName}
                 </p>
-                <Button onClick={logOut}>LogOut</Button>
+                <Button className="ms-4" onClick={logOut}>
+                  LogOut
+                </Button>
               </>
             ) : (
               <>
